@@ -2,14 +2,15 @@
 $pdo = new PDO('mysql:host=mysql;dbname=basedetest;host=127.0.0.1', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
+
 if(isset($_GET['id']) AND !empty($_GET['id'])){
-    $get_id = htmlspecialchars($_GET['id']);
-    $article = $pdo->prepare('SELECT * FROM article WHERE id = ?');
-    $article->execute(array($get_id));
-if($article->rowCount() == 1){
-    $article = $article->fetch();
-    $title = $article['title'];
-    $content = $article['content'];
+        $get_id = htmlspecialchars($_GET['id']);
+        $article = $pdo->prepare('SELECT * FROM article WHERE id = ?');
+        $article->execute(array($get_id));
+    if($article->rowCount() == 1){
+        $article = $article->fetch();
+        $title = $article['title'];
+        $content = $article['content'];
     }else{
     die("Cet article n'existe pas !");
 }
@@ -17,7 +18,6 @@ if($article->rowCount() == 1){
 }else{
     die('Error');
 }
-
     
 ?>
 <!DOCTYPE html>
@@ -30,8 +30,9 @@ if($article->rowCount() == 1){
 </head>
 <body>
 
-  <h1><?= $title ?></h1>
+  <h1><?= $title ?></h1> 
   <p><?= $content ?></p>
-
+  <a  class="delete" href="delete.php?article_delete=<?= intval($article['id']) ?> ">Supprimer</a>
+  <a  class="delete" href="modify.php?article_modifier=<?= intval($article['id']) ?> ">Modifier</a>
 </body>
 </html>

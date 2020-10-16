@@ -2,9 +2,9 @@
 $pdo = new PDO('mysql:host=mysql;dbname=basedetest;host=127.0.0.1', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
-$article = $pdo->query('SELECT * FROM article ORDER BY date_time_publication DESC');
 
-    
+$article = $pdo->query('SELECT * FROM article ORDER BY id DESC');
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,8 +18,9 @@ $article = $pdo->query('SELECT * FROM article ORDER BY date_time_publication DES
     <ul>
         <?php while($a = $article->fetch()){?>
 
-        <li> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title'] ?></a></li>
-
+        <li class="li">  
+            <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title'] ?></a>
+        </li>
          <?php } ?>
 
     </ul>

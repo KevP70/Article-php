@@ -4,7 +4,7 @@ ul {
     list-style: none;
 }
 
-li {
+.li {
     margin: 50px auto;
     width: 100px;
     height: 50px;
@@ -18,6 +18,11 @@ a {
     text-transform: none;
     text-decoration: none;
     color: #fff;
+}
+
+.delete {
+    color: red;
+    font-weight: bold;
 }
 
 
